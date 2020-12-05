@@ -99,3 +99,35 @@ def detectCycle(self, head: ListNode) -> ListNode:
         t = t.next
     return None
 ```
+## Linked List Cycle
+https://leetcode.com/problems/linked-list-cycle/
+```python
+def hasCycle(self, head: ListNode) -> bool:
+    t = head
+    d = {}
+    while t:
+        if t not in d:
+            d[t] = 1
+        else:
+            return True
+        t = t.next
+    return False
+```
+## Reorder List
+https://leetcode.com/problems/reorder-list/
+```python
+def reorderList(self, head: ListNode) -> None:
+    a = {}
+    n = head
+    while n and n.next != None:
+        a[n.next] = n
+        n = n.next
+
+    start = head
+    end = n
+    while start != None and start != end:
+        a[end].next = None
+        end.next = start.next
+        start.next = end
+        start = end.next
+        end = a[end]
