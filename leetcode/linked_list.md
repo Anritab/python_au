@@ -132,3 +132,62 @@ def reorderList(self, head: ListNode) -> None:
         start = end.next
         end = a[end]
 ```
+## Intersection of Two Linked Lists
+https://leetcode.com/problems/intersection-of-two-linked-lists/
+```python
+def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+    tA, tB = headA, headB
+    lenA, lenB = 0, 0
+    while tA != None:
+        lenA += 1
+        tA = tA.next
+    while tB != None:
+        lenB += 1
+        tB = tB.next
+    if lenA > lenB:
+        for i in range(lenA - lenB):
+            headA = headA.next
+    elif lenA < lenB:
+        for i in range(lenB - lenA):
+            headB = headB.next
+    while headA != None and headB != None:
+        if headA == headB:
+            return headA
+        headA, headB = headA.next, headB.next
+    return None
+```
+## Sort List
+https://leetcode.com/problems/sort-list/
+```python
+    def merged(self, head):
+        x, y = head, head
+        while x and x.next and x.next.next:
+            x = x.next.next
+            y = y.next
+        return y
+    def merge(self, l1, l2):
+        x = ListNode(-1)
+        h = x
+        while l1 and l2:
+            if l1.val < l2.val:
+                h.next = l1
+                l1 = l1.next
+            else:
+                h.next = l2
+                l2 = l2.next
+            h = h.next
+        if l1:
+            h.next = l1
+        else:
+            h.next = l2
+        return x.next
+    def sortList(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        m = self.merged(head)
+        nhead = m.next
+        m.next = None
+        left = self.sortList(head)
+        right = self.sortList(nhead)
+        return self.merge(left, right)
+```
