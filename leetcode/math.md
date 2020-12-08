@@ -29,3 +29,19 @@ https://leetcode.com/problems/palindrome-number/
             return True
         return False
 ```
+## Fizz Buzz
+https://leetcode.com/problems/fizz-buzz/
+```python
+    def fizzBuzz(self, n: int) -> List[str]:
+        a = []
+        for i in range(1, n + 1):
+            if i % 15 == 0:
+                a.append("FizzBuzz")
+            elif i % 5 == 0:
+                a.append("Buzz")
+            elif i % 3 == 0:
+                a.append("Fizz")
+            else:
+                a.append(str(i))
+        return a
+```
