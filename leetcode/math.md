@@ -1,4 +1,5 @@
 ## Reverse Integer
+https://leetcode.com/problems/reverse-integer/
 ```python
     def reverse(self, x: int) -> int:
         flag = 0
@@ -15,4 +16,16 @@
         if y > 2 ** 31 - 1 or y < - 2 ** 31:
             return 0
         return y
+```
+## Palindrome Number
+https://leetcode.com/problems/palindrome-number/
+```python
+    def isPalindrome(self, x: int) -> bool:
+        x = str(x)
+        y = ""
+        for i in range(len(x) - 1, -1, -1):
+            y += x[i]
+        if y == x:
+            return True
+        return False
 ```
