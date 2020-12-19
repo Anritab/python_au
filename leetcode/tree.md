@@ -27,3 +27,42 @@ class Solution:
             a += self.inorderTraversal(root.right)
         return a
 ```
+## Invert Binary Tree
+https://leetcode.com/problems/invert-binary-tree/
+```python
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return None
+        else:
+            l = self.invertTree(root.left)
+            r = self.invertTree(root.right)
+            root.left = r
+            root.right = l
+        return root
+```
+## Binary Search Tree Iterator
+https://leetcode.com/problems/binary-search-tree-iterator/
+```python
+
+```
+## Binary Tree Level Order Traversal
+https://leetcode.com/problems/binary-tree-level-order-traversal/
+```python
+
+```
+## Kth Smallest Element in a BST
+https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+```python
+
+```
+## Validate Binary Search Tree
+https://leetcode.com/problems/validate-binary-search-tree/
+```python
+
+```
+## Symmetric Tree
+https://leetcode.com/problems/symmetric-tree/
+```python
+
+```
