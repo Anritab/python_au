@@ -1,0 +1,32 @@
+import unittest
+from hexnumber import HexNumber
+def list_in_string(num):
+    a = num.num
+    number = ""
+    while a is not None:
+        number += a.val
+        a = a.next
+    if number[-1] == '0':
+        number = number[:-1:1]
+    return number
+class Test_HexNumber(unittest.TestCase):
+    def test1(self):
+        num1 = HexNumber("3333")
+        num2 = HexNumber("4444")
+        expect = list_in_string(HexNumber("7777"))
+        result = list_in_string(num1.add(num2))
+        self.assertEqual(expect, result)
+    def test2(self):
+        num1 = HexNumber("3421")
+        num2 = HexNumber("EFEA")
+        expect = list_in_string(HexNumber("1240B"))
+        result = list_in_string(num1.add(num2))
+        self.assertEqual(expect, result)
+    def test1(self):
+        num1 = HexNumber("F")
+        num2 = HexNumber("A")
+        expect = list_in_string(HexNumber("19"))
+        result = list_in_string(num1.add(num2))
+        self.assertEqual(expect, result)
+if __name__ == "__main__":
+    unittest.main()
