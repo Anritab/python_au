@@ -191,3 +191,22 @@ https://leetcode.com/problems/sort-list/
         right = self.sortList(nhead)
         return self.merge(left, right)
 ```
+## Merge k Sorted Lists
+https://leetcode.com/problems/merge-k-sorted-lists/
+```python
+class Solution(object):
+	def mergeKLists(self, lists):
+		l = []
+		for i in lists:
+			while i:
+				l.append(i.val)
+				i = i.next
+		l.sort()
+		print(l)
+		head = ListNode()
+		tmp = head
+		for i in range(0,len(l)):
+			tmp.next = ListNode(l[i])
+			tmp = tmp.next
+		return head.next
+```
