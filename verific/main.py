@@ -34,19 +34,19 @@ def check_comment(msg):
   pre = mass[0]
   post = mass[1].split(' ')
   if pre not in PREFIX:
-    res.append("The prefix of your comment must be from {}".format(PREFIX))
+    res.append("Prefix of commit {}".format(PREFIX))
   if post[0] not in GROUP:
-    res.append("Number of your group must be from {}".format(GROUP))
+    res.append("Number of group {}".format(GROUP))
   if len(post) > 1 and post[1] not in ACTION:
-    res.append("Action of your comment must be from {}".format(ACTION))
+    res.append("Action of comment {}".format(ACTION))
   return '\n'.join(res)
 
 def create_message(pull_req):
-  msg = "Your pull request: {}\n".format(pull_req['title'])
+  msg = "Pull request: {}\n".format(pull_req['title'])
   msg += check_comment(pull_req['title'])
   msg += '\n\n'
   for com in return_commits(pull_req):
-    msg += 'Your commit: {}\n'.format(com)
+    msg += 'Commit: {}\n'.format(com)
     msg += check_comment(com)
     msg += '\n'
   return msg
@@ -61,7 +61,7 @@ def sendmsg(pull_req, msg):
 
 def main():
   for pr in return_pullreq('Anritab', 'python_au').json():
-    if len(create_message(pr)) > 200:
+    if len(create_message(pr)) != 0:
       sendmsg(pr, create_message(pr))
 
 main()
