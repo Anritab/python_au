@@ -61,3 +61,13 @@ https://leetcode.com/problems/sqrtx/
     def mySqrt(self, x: int) -> int:
         return int(x ** 0.5)
 ```
+## K Closest Points to Origin
+https://leetcode.com/problems/k-closest-points-to-origin/
+```python
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        def sqr_dist(point):
+            return point[0] * point[0] + point[1] * point[1]
+        points.sort(key=sqr_dist)
+        return points[:k]
+```
