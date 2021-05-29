@@ -130,3 +130,18 @@ class Solution:
                     grid[row][col]=1
         return -1
 ```
+## Maximum Depth of N-ary Tree
+https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
+```python
+class Solution:
+    def maxDepth(self, root: 'Node') -> int:
+        if not root: return 0
+        def calc_depth(node):
+            if not node:
+                return 0
+            try:
+                return 1 + max(map(calc_depth, node.children))
+            except:
+                return 1
+        return calc_depth(root)
+```
