@@ -1,5 +1,5 @@
-## K Closest Points to Origin
-https://leetcode.com/problems/k-closest-points-to-origin/
+## Course Schedule II
+https://leetcode.com/problems/course-schedule-ii/
 ```python
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
