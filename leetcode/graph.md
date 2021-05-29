@@ -68,3 +68,22 @@ class Solution:
                     ans += 1
         return ans
 ```
+## Is Graph Bipartite?
+https://leetcode.com/problems/is-graph-bipartite/
+```python
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        color = [0]*len(graph)
+        for i in range(len(graph)):
+            if color[i] == 0:
+                q = deque()
+                q.append((i, 1))
+                while(q):
+                    node, ncolor = q.popleft() 
+                    if color[node] == 0: 
+                        color[node] = ncolor 
+                        for nx in graph[node]:
+                            q.append((nx, -ncolor))
+                    if color[node] != ncolor:
+                        return False
+        return True
+        
