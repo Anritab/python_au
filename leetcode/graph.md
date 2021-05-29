@@ -108,3 +108,25 @@ class Solution:
                     P[to] = price + p
                     q.append((to, price + p, stops + 1))   
         return res if res < inf else -1
+```
+## Shortest Path in Binary Matrix
+https://leetcode.com/problems/shortest-path-in-binary-matrix/
+```python
+class Solution:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        n=len(grid)
+        if grid[0][0] or grid[-1][-1]:
+            return -1
+        queue=[(0,0,1)]
+        dir=[(0, 1), (1, 0), (-1, 0), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+        for i,j,d in queue:
+            if i==n-1 and j==n-1:
+                return d
+            for x,y in dir:
+                row=i+x
+                col=j+y
+                if 0<=row<n and 0<=col<n and not grid[row][col]:
+                    queue.append((row,col,d+1))
+                    grid[row][col]=1
+        return -1
+```
